@@ -1,12 +1,26 @@
 # Seeing-Eye Vest
-**An assistive wearable that detects obstacles using LiDAR and alerts visually-impaired users with haptic feedback.**
+**A wearable mobility aid that detects obstacles using LiDAR and alerts visually-impaired users with haptic feedback.**
 
 ---
+
+![Prototype Photos](https://github.com/AlbertMT8/haptic-vest-arduino-code/blob/main/prototypephotos.png?raw=true)
 
 ## Overview
 The Seeing-Eye Vest is a wearable assistive device designed to help visually-impaired users navigate safely and independently. Using a TF-Luna LiDAR sensor mounted on a pan-tilt servo, the system continuously scans the environment for nearby obstacles. When an object is detected within a set threshold distance, vibration buzzers activate on the vest to indicate the obstacle’s direction.
 
 This project is designed for NYU Tandon’s **EG-UY 1004: Introduction to Engineering & Design** course.
+
+---
+## Team
+
+| Name        | Role                                          |
+|-------------|-----------------------------------------------|
+| Diego Gao   | Hardware — mounting, wiring, enclosure        |
+| Clivia Luo  | Design — user comfort, vest integration       |
+| Almira Tepe | Project Manager — deliverables and sprint planning |
+| Albert Tsao | Software Lead — Arduino firmware and haptics logic |
+
+Special thanks to **Prof. Paredes** for guidance and support.
 
 ---
 
@@ -54,6 +68,8 @@ This project is designed for NYU Tandon’s **EG-UY 1004: Introduction to Engine
 | D3 / D4 / D5 | Buzzers          |
 | 5V and GND | Power rails        |
 
+Circuit Diagram:
+
 ![Circuit Diagram](https://github.com/AlbertMT8/haptic-vest-arduino-code/blob/main/circuitdiagram.png?raw=true)
 
 ---
@@ -80,6 +96,8 @@ Loop:
  │       Trigger buzzer based on angle
  └─ Continue scanning
 ```
+Code Flowchart:
+![Code Flowchart](https://github.com/AlbertMT8/haptic-vest-arduino-code/blob/main/codeflowchart.png?raw=true)
 
 ## Planned Improvements
 - Add dual-LiDAR system for vertical sensing
@@ -87,19 +105,6 @@ Loop:
 - Add ultrasonic backup at blind angles
 - Waterproof enclosure and better wire management
 - Rechargeable power system
-
----
-
-## Team
-
-| Name        | Role                                          |
-|-------------|-----------------------------------------------|
-| Diego Gao   | Hardware — mounting, wiring, enclosure        |
-| Clivia Luo  | Design — user comfort, vest integration       |
-| Almira Tepe | Project Manager — deliverables and sprint planning |
-| Albert Tsao | Software Lead — Arduino firmware and haptics logic |
-
-Special thanks to **Prof. Paredes** for guidance and support.
 
 ---
 
