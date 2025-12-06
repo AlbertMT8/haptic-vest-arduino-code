@@ -1,62 +1,65 @@
-Seeing-Eye Vest
+# Seeing-Eye Vest
+**An assistive wearable that detects obstacles using LiDAR and alerts visually-impaired users with haptic feedback.**
 
-An assistive wearable that detects obstacles using LiDAR and alerts visually-impaired users with haptic feedback.
+---
 
-Overview
-
+## Overview
 The Seeing-Eye Vest is a wearable assistive device designed to help visually-impaired users navigate safely and independently. Using a TF-Luna LiDAR sensor mounted on a pan-tilt servo, the system continuously scans the environment for nearby obstacles. When an object is detected within a set threshold distance, vibration buzzers activate on the vest to indicate the obstacle’s direction.
 
-This project is designed for NYU Tandon’s EG-UY 1004: Introduction to Engineering & Design course.
+This project is designed for NYU Tandon’s **EG-UY 1004: Introduction to Engineering & Design** course.
 
-Features
+---
 
-Real-time obstacle detection using a 100 cm LiDAR threshold
+## Features
+- Real-time obstacle detection using a 100 cm LiDAR threshold
+- Angular scanning from 30° to 150° using an SG90 servo
+- Directional haptic feedback to alert left/center/right collisions
+- Lightweight wearable design for comfortable daily use
+- Modular hardware system for expansion (multiple sensors, audio alerts)
 
-Angular scanning from 30° to 150° using an SG90 servo
+---
 
-Directional haptic feedback to alert left/center/right collisions
+## How It Works
+1. Servo sweeps horizontally across a 120° field of view
+2. LiDAR continuously measures distances
+3. If any measurement is within danger range → detection triggers
+4. Based on servo angle, a corresponding buzzer vibrates:
+   - Left → left buzzer
+   - Center → center buzzer
+   - Right → right buzzer
+5. LEDs optionally light up for debugging/visual confirmation
 
-Lightweight wearable design for comfortable daily use
+---
 
-Modular hardware system for expansion (multiple sensors, audio alerts)
+## Hardware Components
 
-How It Works
+| Component       | Model           | Purpose                       |
+|----------------|-----------------|-------------------------------|
+| Microcontroller| Arduino Uno R3  | System control and logic      |
+| LiDAR Sensor   | TF-Luna (UART)  | Distance measurement          |
+| Servo Motor    | SG90            | Sweeping detection angle      |
+| Piezo Buzzers  | x3              | Haptic alerts                 |
+| LED            | Built-in        | Status indicator              |
+| Power          | 5V Battery Pack | Portable wearable usage       |
 
-Servo sweeps horizontally across a 120° field of view
+---
 
-LiDAR continuously measures distances
+## Wiring Diagram (Summary)
 
-If any measurement is within danger range → detection triggers
+| Arduino Pin | Connected To       |
+|------------|--------------------|
+| D10        | LiDAR TX (UART RX) |
+| D11        | LiDAR RX (unused)  |
+| D9         | Servo signal       |
+| D3 / D4 / D5 | Buzzers          |
+| 5V and GND | Power rails        |
 
-Based on servo angle, a corresponding buzzer vibrates:
+*Full diagram (.png) coming soon.*
 
-Left → left buzzer
+---
 
-Center → center buzzer
-
-Right → right buzzer
-
-LEDs optionally light up for debugging/visual confirmation
-
-Hardware Components
-Component	Model	Purpose
-Microcontroller	Arduino Uno R3	System control and logic
-LiDAR Sensor	TF-Luna (UART)	Distance measurement
-Servo Motor	SG90	Sweeping detection angle
-Piezo Buzzers	x3	Haptic alerts
-LED	Built-in	Status indicator
-Power	5V Battery Pack	Portable wearable usage
-Wiring Diagram (Summary)
-Arduino Pin	Connected To
-D10	LiDAR TX (UART RX)
-D11	LiDAR RX (unused)
-D9	Servo signal
-D3 / D4 / D5	Buzzers
-5V and GND	Power Rails
-
-(Full diagram .png coming soon)
-
-Code Structure
+## Code Structure
+```text
 /src
  └── seeing_eye_vest.ino      # Main Arduino firmware
 /docs
@@ -65,7 +68,7 @@ Code Structure
  ├── wiring_diagram.png
  └── servo_mount.stl
 
-Firmware Logic (Pseudo-Flow)
+
 Start
  |
 Initialize servo + LiDAR + buzzers
@@ -76,44 +79,44 @@ Loop:
  ├─ If distance < threshold:
  │       Trigger buzzer based on angle
  └─ Continue scanning
+```
 
-Planned Improvements
+## Planned Improvements
+- Add dual-LiDAR system for vertical sensing
+- Integrate machine learning to classify obstacle types
+- Add ultrasonic backup at blind angles
+- Waterproof enclosure and better wire management
+- Rechargeable power system
 
-Add dual-LiDAR system for vertical sensing
+---
 
-Integrate machine learning to classify obstacle types
+## Team
 
-Add ultrasonic backup at blind angles
+| Name        | Role                                          |
+|-------------|-----------------------------------------------|
+| Diego Gao   | Hardware — mounting, wiring, enclosure        |
+| Clivia Luo  | Design — user comfort, vest integration       |
+| Almira Tepe | Project Manager — deliverables and sprint planning |
+| Albert Tsao | Software Lead — Arduino firmware and haptics logic |
 
-Waterproof enclosure and better wire management
+Special thanks to **Prof. Paredes** for guidance and support.
 
-Rechargeable power system
+---
 
-Team
-Name	Role
-Diego	Gao Hardware — mounting, wiring, enclosure
-Clivia Luo Design — user comfort, vest integration
-Almira Tepe Project Manager — Deliverables and sprint planning
-Albert Tsao	Software Lead — Arduino firmware and haptics logic
-
-
-Special thanks to Prof. Paredes for guidance and support.
-
-License
-
+## License
 MIT License — free to modify, use, and improve with credit.
 
-Getting Started
-Requirements
+---
 
-Arduino IDE
+## Getting Started
 
-TF-Luna UART library (if using helper driver)
+### Requirements
+- Arduino IDE
+- TF-Luna UART library (if using helper driver)
 
-Uploading
+### Uploading
+1. Open the `.ino` file in Arduino IDE  
+2. Select the correct board and port  
+3. Click **Upload**
 
-Open .ino file in Arduino IDE
 
-Select correct board and port
-
-Click Upload
