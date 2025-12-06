@@ -54,7 +54,7 @@ This project is designed for NYU Tandon’s **EG-UY 1004: Introduction to Engine
 | D3 / D4 / D5 | Buzzers          |
 | 5V and GND | Power rails        |
 
-*Full diagram (.png) coming soon.*
+![Circuit Diagram](https://github.com/AlbertMT8/haptic-vest-arduino-code/blob/main/circuitdiagram.png?raw=true)
 
 ---
 
